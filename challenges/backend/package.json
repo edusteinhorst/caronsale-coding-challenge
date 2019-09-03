@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/ts-node src/app/main.ts",
-    "test": "./node_modules/.bin/mocha --compilers ts:ts-node/register ./src/**/*.spec.ts"
+    "test": "nyc mocha -r ts-node/register src/**/*.spec.ts"
   },
   "author": "",
   "license": "ISC",
@@ -13,9 +13,26 @@
     "@types/inversify": "^2.0.33",
     "@types/node": "^12.0.0",
     "inversify": "^4.13.0",
-    "mocha": "^5.2.0",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.spec.ts",
+      "**/*.d.ts"
+    ],
+    "all": true  
   }
 }
