@@ -4,18 +4,22 @@
   "description": "CarOnSale Backend Coding Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node src/app/main.ts",
-    "test": "nyc mocha -r ts-node/register src/**/*.spec.ts"
+    "start": "env-cmd -f ./src/config/dev.env ./node_modules/.bin/ts-node src/app/main.ts",
+    "test": "env-cmd -f ./src/config/dev.env nyc mocha -r ts-node/register src/**/*.spec.ts --timeout 15000",
+    "lint": "tslint 'src/**/*.{ts,tsx}'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/inversify": "^2.0.33",
     "@types/node": "^12.0.0",
+    "axios": "^0.19.0",
+    "env-cmd": "^10.0.1",
     "inversify": "^4.13.0",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.0",
